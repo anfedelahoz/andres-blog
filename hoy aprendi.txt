@@ -1,0 +1,21 @@
+Hoy aprendi un poco mas acerca de los decoradores, como por ejemplo, usarlos
+para verificar si el conjunto de otro decorador mas una funcion pueden ser ejecutados
+al comprobar el id del usuario.
+Ej:
+
+from functools import wraps
+def admin_only(f):  #Decorador
+    @wraps(f)       #Toma la función (en este caso la definida debajo de la ruta) y agrega funcionalidad de copiar el nombre de la función, la cadena de documentos, la lista de argumentos, etc.
+    def decorated_function(*args, **kwargs): #Acepta n-positional arguments como n-key arguments.
+        #Si el ID no es 1 o el usuario no esta autenticado, devuelve abortar con error 403
+        if current_user.id != 1 or not current_user.is_authenticated:
+            return abort(403)
+        #De lo contrario, continúe con la función.
+        return f(*args, **kwargs)
+    return decorated_function
+
+Ver: https://stackoverflow.com/questions/308999/what-does-functools-wraps-do
+
+Tambien, aprendi a crear una relacion bidireccional de Uno a Varios en la base de datos de SQLite,
+usando SQLAlchemy.
+
