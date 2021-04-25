@@ -22,7 +22,7 @@ def admin_only(function):
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = config('SECRET_KEY')
+app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 Bootstrap(app)
 gravatar = Gravatar(app,
